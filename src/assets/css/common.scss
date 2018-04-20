@@ -1,0 +1,160 @@
+//基于750的设计稿，尺寸使用rem
+@function px2rem($px, $base-font-size: 75px) {
+  @return ($px / $base-font-size) * 1rem;
+}
+//字体用px根据dpr适配
+@mixin font-dpr($font-size){
+  $font:$font-size/2;
+  font-size: $font;
+  [data-dpr="2"] & { font-size: $font+2px;}
+  [data-dpr="3"] & { font-size: $font+4px;}
+}
+//上下左右边框 border
+@mixin border-1px($color){
+  position:absolute;
+  content:"";
+  top:0;
+  left:0;
+  -webkit-box-sizing:border-box;
+  -moz-box-sizing:border-box;
+  box-sizing:border-box;
+  width:100%;
+  height:100%;
+  border:1px solid $color;
+  point-events:none;
+}
+//底部boder
+@mixin border-1px-bottom($color){
+    position:absolute;
+    content: "";
+    height:1px;
+    background:$color;
+    left:0;
+    right:0;
+    bottom: 0;
+}
+//顶部boder
+@mixin border-1px-top($color){
+  position:absolute;
+  content: "";
+  height:1px;
+  background:$color;
+  left:0;
+  right:0;
+  top: 0;
+}
+//左boder
+@mixin border-1px-left($color){
+  position:absolute;
+  content: "";
+  width:1px;
+  background:$color;
+  top:0;
+  bottom:0;
+  left:0;
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+  -webkit-transform: scaleX(0.5);
+  transform: scaleX(0.5);
+}
+//右boder
+@mixin border-1px-right($color){
+  position:absolute;
+  content: "";
+  width:1px;
+  background:$color;
+  top:0;
+  bottom:0;
+  right:0;
+}
+@mixin flexbox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  display: -moz-box; /*Firefox*/
+}
+@mixin flexN($n) {
+  -webkit-box-flex: $n;      /* OLD - iOS 6-, Safari 3.1-6 */
+  -moz-box-flex: $n;         /* OLD - Firefox 19- */
+  -webkit-flex: $n;          /* Chrome */
+  -ms-flex: $n;              /* IE 10 */
+  flex: $n;                  /* NEW, Spec - Opera 12.1, Firefox 20+ */
+}
+
+@mixin flexCenter {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  display: -moz-box; /*Firefox*/
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin lines($n) {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $n;
+  overflow: hidden;
+}
+
+/*set color tone*/
+/*背景色*/
+$bgColor: #F8F8F8;          //页面背景色
+$bgblue:#3076FC;            //蓝色背景 (用于底部层级：未点击背景色一级色/点击背景色二级色)
+$bgactiveblue:#2E7BC2;      //蓝色背景点击色 (用于底部层级：点击背景色一级色)
+
+$bglightblue:#63AFF6;       //蓝色背景 (用于底部层级：未点击背景色二级色/点击背景色三级色)
+$bglightblue2:#9FD0FD;      //浅蓝色背景(用于底部层级：未点击背景色三级)
+
+$bglightblue3:#F1F8FF;      //浅蓝色背景(用于底部层级：点击背景色四级色)
+$bgtagblue:#DBF1FF;         //浅蓝色背景(用于tag)
+
+$bggrey:#F8F8F8;            //浅灰色背景(用于按钮,底部层级点击背景色)
+$bgdeletegrey:#EFF2F7;      //灰色背景（由于删除按钮）
+$bgunactiveGrey:#D0D7DE;    //灰色背景不可点击色
+
+$bgfff:#ffffff;             //白色背景
+$bgf1: #f1f1f1;             //客户详情客户信息头像icon背景色
+
+$bggreen:#34BE85;           //绿色背景
+$bglightgreen:#56bb17;      //青绿色背景
+$bglightgreen2:#E1F5ED;     //浅绿色背景(用于tag)
+
+$bglightorange:#FFECE8;     //浅橘色背景
+$bglightred:#FBE0E3;        //浅红色背景
+
+$bgblack:#666666;           //黑色背景
+
+/*字体*/
+$fontfff:#ffffff;           //白色字体
+$font000:#000000;           //黑色字体(突出色，需要突出的标题，多用于弹框)
+$fontblack:#495362;         //灰色字体(主色，标题突出的颜色)
+$fontblue:#3076FC;          //蓝色字体(主色，logo色，当前选中及按钮色)
+$font333: #333333;
+$font666: #666666;
+$fontplaceHolder: #999999;          //
+
+$fontlightgreen:#56bb17;    //青绿色字体(采购成功按钮)
+$fontgreen:#34BE85;         //绿色字体(库存管理)
+
+$fontgrey:#8492A6;          //灰色字体
+$fontlightgrey:#ACBACA;     //浅灰色字体
+$fontccc: #CCCCCC;          //客户详情头像文字颜色
+
+$fontred:#D0021B;           //红色字体(采购失败按钮)
+$fontorange:#FF8062;        //橘色字体
+/*边框*/
+$borderblue:#368CDA;              //蓝色边框
+$borderlightblue:#A9D3FA;         //浅蓝色边框
+
+$bordergrey:#ACBACA;              //灰色边框(牌证管理)
+$borderlightgrey:#D3DCE6;         //浅灰色边框
+$borderlightgrey2:#EFF2F7;         //浅灰色边框
+
+$bordergreen:#34BE85;             //绿色边框
+$borderlightgreen:#56BB17;        //青绿色边框
+
+$borderred:#D0021B;               //红色边框
+$borderorange:#FF8468;            //橘色边框
